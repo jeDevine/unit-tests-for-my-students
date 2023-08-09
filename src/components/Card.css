@@ -2,7 +2,6 @@
   background-color: transparent;
   width: 300px;
   height: 300px;
-  border: 1px solid #f1f1f1;
   perspective: 1000px;
   margin: 20px;
 }
@@ -32,12 +31,12 @@
 }
 
 .Card .front {
-  background-color: #bbb;
+  background-color: #9ac4f8;
   color: black;
 }
 
 .Card .back {
-  background-color: dodgerblue;
-  color: white;
+  background-color: #99edcc;
+  color: black;
   transform: rotateY(180deg);
 }

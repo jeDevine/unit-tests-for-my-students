@@ -15,6 +15,12 @@ const Main = () => {
       ],
     },
     {
+      question: ["An article is use for...?"],
+      answer: [
+        "Any part of the page that is planned on being sent out to more than one place. Like a news article that could show up on new york times and the daily news",
+      ],
+    },
+    {
       question: [
         "How do we apply attributes to an element? (class, id, etc.)?",
       ],
@@ -334,7 +340,7 @@ const Main = () => {
       answer: ["break;"],
     },
   ]);
-  const [objects] = useState<FlashCard[]>([
+  const [objectsArrays] = useState<FlashCard[]>([
     {
       question: ["What brackets signify an object?"],
       answer: ["curly brackets {}"],
@@ -370,8 +376,6 @@ const Main = () => {
       ],
       answer: ["console.log(family.dog.name)"],
     },
-  ]);
-  const [arrays] = useState<FlashCard[]>([
     {
       question: ["what brackets signify arrays?"],
       answer: ["square brackets []"],
@@ -381,7 +385,7 @@ const Main = () => {
       answer: ["index"],
     },
     {
-      question: ["how do we modify an array?"],
+      question: ["how do we modify an element in an array?"],
       answer: [
         "using the index and = sign array[index] = to the value that you want that spot to be",
       ],
@@ -835,6 +839,177 @@ const Main = () => {
         "}",
       ],
     },
+    {
+      question: ["What does the keyword 'this' mean?"],
+      answer: [
+        "this.property means that we are targeting the property that lives on the class. For example with the constructor",
+        "constructor( newProperty1 ) {",
+        "this.property1 = newProperty1;",
+        "}",
+        "this classes property1 will have the value passed as newProperty1",
+      ],
+    },
+  ]);
+  const [relationalDB] = useState<FlashCard[]>([
+    {
+      question: ["What is a Relational Database? (PostgreSQL)"],
+      answer: [
+        "A database that organizes data into one or more tables of rows and columns with a unique key for each row.",
+      ],
+    },
+    {
+      question: ["What is the name of the unique value for each row?"],
+      answer: [
+        "foreign key",
+        "CREATE TABLE test(id SERIAL PRIMARY KEY, column2, column3...)",
+      ],
+    },
+    {
+      question: ["What data type do we use for whole numbers?"],
+      answer: ["SMALLINT, INT, MEDIUMINT, BIGINT"],
+    },
+    {
+      question: ["What data type do we use for decimal numbers?"],
+      answer: ["REAL, FLOAT"],
+    },
+    {
+      question: ["What data type is used for strings?"],
+      answer: ["CHAR(LENGTH), VARCHAR(LENGTH), TEXT"],
+    },
+    {
+      question: ["In PgAdmin, how do we make a new table?"],
+      answer: ["CREATE TABLE(column1, column2, column3...)"],
+    },
+    {
+      question: ["In PgAdmin, how do we add values to the table?"],
+      answer: [
+        "INSERT INTO tableName (column1, column2,column3...)",
+        "VALUES(value1, value2, value3...)",
+      ],
+    },
+    {
+      question: ["In PgAdmin, How do we retrieve data froma a table?"],
+      answer: ["SELECT * FROM tableName"],
+    },
+    {
+      question: ["In PgAdmin, How do we modify data in a table?"],
+      answer: ["UPDATE tableName SET property=value WHERE..."],
+    },
+    {
+      question: ["In PgAdmin, How do we delete data within a table?"],
+      answer: ["DELETE FROM tableName WHERE..."],
+    },
+    {
+      question: ["In PgAdmin, How do we target a specific column in a table?"],
+      answer: [
+        "using WHERE and making a conditional query",
+        "SELECT * FROM staff WHERE name='James'",
+      ],
+    },
+    {
+      question: ["In PgAdmin, How do we return the data in a sorted manner?"],
+      answer: [
+        "ORDER BY is how we sort data and using ASC or DESC for accending and descending order",
+        "SELECT * FROM staff ORDER BY name ASC",
+      ],
+    },
+    {
+      question: ["In PgAdmin, How do we return data from more than one table?"],
+      answer: [
+        "With a JOIN and a corresponding key",
+        "SELECT * FROM staff JOIN alumni ON staff.name = alumni.name",
+      ],
+    },
+    {
+      question: [
+        "What is the difference between left/right join and inner join/join?",
+      ],
+      answer: [
+        "inner join/join will only display the data that has a value in both tables while a left/right join will display all the data from both tables even if it doesn't match",
+      ],
+    },
+  ]);
+  const [noSQLDatabase] = useState<FlashCard[]>([
+    {
+      question: ["What is a noSQL database? (MongoDB)"],
+      answer: [
+        "It is a document store. It stores collections of documents which are JSON objects",
+      ],
+    },
+    {
+      question: ["What does a MongoDB document look like and behave as?"],
+      answer: ["Just like a JS object."],
+    },
+    {
+      question: ["What unique property will MongoDB add to EVERY document?"],
+      answer: ["_id: ObjectId('f64ghe5r6gtr6e')"],
+    },
+    {
+      question: ["In MongoDB, how do we add a document?"],
+      answer: ["db.collectionName.insertOne({})"],
+    },
+    {
+      question: ["In MongoDB, how do we list all documents?"],
+      answer: [
+        "db.collectionName.find()",
+        "Leaving the find() method empty returns everything",
+      ],
+    },
+    {
+      question: [
+        "In MongoDB, how do we switch which database we are currently using?",
+      ],
+      answer: ["use databaseName"],
+    },
+    {
+      question: [
+        "In MongoDB, how do we add more than one document to a collection at once?",
+      ],
+      answer: ["db.collectionName.insertMany([{},{}])"],
+    },
+    {
+      question: [
+        "In MongoDB, how do we return just one document based on a search?",
+      ],
+      answer: ["db.collectionName.findOne()"],
+    },
+    {
+      question: [
+        "In MongoDB, how do we make it so only a set amount of results are returned?",
+      ],
+      answer: [
+        "db.collectionName.find().limit()",
+        "the .limit() at the end allows it and the number you want to come back goes in the () like .limit(4) for 4 results",
+      ],
+    },
+    {
+      question: ["In MongoDB, how do we return the data in an ordered manner?"],
+      answer: [
+        "db.collectionName.find().sort()",
+        ".sort() allows us to sort our results with a condition like .sort( {name: 1} )",
+      ],
+    },
+    {
+      question: ["In MongoDB, how do we search for more than one condition?"],
+      answer: [
+        "$or / $and allows the query to take in more than one condition",
+        "db.collectionName.find( { $or: [{name: 'james'},{name: 'mitch'}] } )",
+      ],
+    },
+    {
+      question: ["In MongoDB, how do we use projection?"],
+      answer: [
+        "Projection is used to limit which fields are shown in the results",
+        "db.collectionName.find({query}, {name: 1, age: -1})",
+        "here we are saying show the name but don't show the age",
+      ],
+    },
+    {
+      question: [
+        "In MongoDB, how do we totally subsitute the whole document with a new one?",
+      ],
+      answer: ["db.collectionName.replaceOne()"],
+    },
   ]);
 
   const shuffleArray = (array: FlashCard[]) => {
@@ -855,25 +1030,35 @@ const Main = () => {
 
   return (
     <div className="Main">
-      <div id="button-container">
-        <button onClick={() => resetHandler(HTML)}>HTML</button>
-        <button onClick={() => resetHandler(styling)}>Styling</button>
-        <button onClick={() => resetHandler(variablesFunctions)}>
-          Variables and Functions
-        </button>
-        <button onClick={() => resetHandler(ifElse)}>if/else</button>
-        <button onClick={() => resetHandler(loops)}>Loops</button>
-        <button onClick={() => resetHandler(objects)}>Objects</button>
-        <button onClick={() => resetHandler(arrays)}>Arrays</button>
-        <button onClick={() => resetHandler(arrayMethods)}>
-          Array Methods
-        </button>
-        <button onClick={() => resetHandler(DOM)}>DOM</button>
-        <button onClick={() => resetHandler(events)}>Events</button>
-        <button onClick={() => resetHandler(jest)}>Jest</button>
-        <button onClick={() => resetHandler(typeScript)}>TypeScript</button>
-        <button onClick={() => resetHandler(classes)}>Classes</button>
-      </div>
+      <header>
+        <h1>Pick a topic to study!</h1>
+        <div id="button-container">
+          <button onClick={() => resetHandler(HTML)}>HTML</button>
+          <button onClick={() => resetHandler(styling)}>Styling</button>
+          <button onClick={() => resetHandler(variablesFunctions)}>
+            Variables and Functions
+          </button>
+          <button onClick={() => resetHandler(ifElse)}>if/else</button>
+          <button onClick={() => resetHandler(loops)}>Loops</button>
+          <button onClick={() => resetHandler(objectsArrays)}>
+            Objects and Arrays
+          </button>
+          <button onClick={() => resetHandler(arrayMethods)}>
+            Array Methods
+          </button>
+          <button onClick={() => resetHandler(DOM)}>DOM</button>
+          <button onClick={() => resetHandler(events)}>Events</button>
+          <button onClick={() => resetHandler(jest)}>Jest</button>
+          <button onClick={() => resetHandler(typeScript)}>TypeScript</button>
+          <button onClick={() => resetHandler(classes)}>Classes</button>
+          <button onClick={() => resetHandler(relationalDB)}>
+            Relational Databases
+          </button>
+          <button onClick={() => resetHandler(noSQLDatabase)}>
+            No SQL Databases
+          </button>
+        </div>
+      </header>
       {deck.length > 1 && (
         <div>
           <ul>

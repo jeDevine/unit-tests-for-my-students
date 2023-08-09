@@ -5,7 +5,11 @@
   font-family: "Open Sans", sans-serif;
 }
 .Main {
-  height: 100vh;
+  min-height: 100vh;
+  background-color: #cb958e;
+}
+h1 {
+  text-align: center;
 }
 .Main ul {
   display: flex;
@@ -16,5 +20,12 @@
 }
 .Main #button-container {
   display: flex;
+
   justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.Main #button-container button {
+  margin: 5px;
+  padding: 5px;
 }
