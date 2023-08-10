@@ -686,6 +686,17 @@ const Main = () => {
       ],
     },
     {
+      question: ["How do you add a method onto an interface?"],
+      answer: [
+        "We declare the method with params and return type and thats it.",
+        "interface MyInterface {",
+        "property1: type",
+        "myMethod( params ) => returnType",
+        "↑ like this ↑",
+        "}",
+      ],
+    },
+    {
       question: [
         "How do we type annotate something that is either a string or null?",
       ],
@@ -755,12 +766,6 @@ const Main = () => {
       ],
     },
     {
-      question: ["What is the constructor in a Class?"],
-      answer: [
-        "A built in method used to initialize the properties of the object.",
-      ],
-    },
-    {
       question: ["What does the constructor do in a class?"],
       answer: [
         "sets the values to the properties that are on this class. Here we have property1 being set by the constructor",
@@ -814,6 +819,18 @@ const Main = () => {
       ],
     },
     {
+      question: ["What is Encapsulation?"],
+      answer: [
+        "The process that keeps the properties, values, and methods tied to the object created from the instance of a class",
+      ],
+    },
+    {
+      question: ["What is Abstraction?"],
+      answer: [
+        "The process of hidding all but the relevant data about an object in order to reduce complexity and increase efficiency",
+      ],
+    },
+    {
       question: ["how do you set an inital value for a property on a class?"],
       answer: [
         "setting the value when you make the property",
@@ -827,12 +844,14 @@ const Main = () => {
       ],
     },
     {
-      question: ["How to set at optional property value with a Class?"],
+      question: [
+        "How to set at optional constructor property value with a Class?",
+      ],
       answer: [
-        "by making the constructor parameter optional",
+        "by making the constructor parameter optional by giving it a default value",
         "class MyClass {",
         "property1: type",
-        "constructor( property1: type = 'optional value') {",
+        "constructor( property1: type = 'default value') {",
         "this.property1 = property1;",
         "}",
         "methods(){}",
@@ -847,6 +866,15 @@ const Main = () => {
         "this.property1 = newProperty1;",
         "}",
         "this classes property1 will have the value passed as newProperty1",
+      ],
+    },
+    {
+      question: ["What are the class member modifiers?"],
+      answer: [
+        "Public - the default, can be used anywhere",
+        "Private - cannot be used outside of the class",
+        "Protected - can only be used inside of the class or subclasses",
+        "readonly - cannot be changed. Only read.",
       ],
     },
   ]);
