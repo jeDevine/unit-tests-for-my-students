@@ -1039,6 +1039,98 @@ const Main = () => {
       answer: ["db.collectionName.replaceOne()"],
     },
   ]);
+  const [express] = useState<FlashCard[]>([
+    {
+      question: ["What is Express?"],
+      answer: [
+        "Express is a framework for node.js that creates HTTP servers and RESTful APIs. It's a very popular, powerful, and relatively easy to use.",
+      ],
+    },
+    {
+      question: ["What is REST?"],
+      answer: [
+        "Representational State Transfers. REST is an architecture style of designing network applications. It relies on HTTP actions and endpoints. (GET, POST, PUT, DELETE)",
+      ],
+    },
+    {
+      question: ["What is an endpoint?"],
+      answer: [
+        "The URI of an URL.",
+        "Ex: http://example.com/search/things",
+        "The endpoint is: /search/things",
+      ],
+    },
+    {
+      question: ["What is an URI?"],
+      answer: [
+        "Everything that comes after the base URL",
+        "Ex: http://example.com/blueberry",
+        "The Base URL is http://example.com",
+        "The URI is /blueberry",
+      ],
+    },
+    {
+      question: ["What is CRUD?"],
+      answer: [
+        "It stands for the REST HTTP actions:",
+        "Create (post)",
+        "Read (get)",
+        "Update (put/patch)",
+        "Delete (delete)",
+      ],
+    },
+    {
+      question: ["What status codes mean what kind of response?"],
+      answer: [
+        "200 - OK (GET, PUT, PATCH)",
+        "201 - Created (POST)",
+        "204 - No Content (DELETE)",
+        "400 - Bad Request (POST, PUT, PATCH)",
+        "404 - Not Found (GET, POST, PUT, PATCH, DELETE)",
+        "500 - Internal Server Error",
+      ],
+    },
+    {
+      question: ["What is the 'Body' in for example a POST request?"],
+      answer: [
+        "The Body is the name of the data passed along with the request. In the case of a POST it is the thing you want to add to your database.",
+      ],
+    },
+    {
+      question: ["What is a route param and how do we add them to endpoints?"],
+      answer: [
+        "Route params are data passed along in the URI",
+        "myRouter.get( `/endpoint/:routeParam` , () => {} )",
+        "...com/blah/routeParam",
+      ],
+    },
+    {
+      question: ["What is a Query String Param and how do we pass them?"],
+      answer: [
+        "Query String Params are data passed along with the request in the URI prefixed with a '?'",
+        "...com/blah?queryParam=123ABC",
+      ],
+    },
+    {
+      question: ["How do we write an endpoint in our router file?"],
+      answer: [
+        "where HTTPmethod would be either GET, POST, PUT or DELETE",
+        "router.HTTPmethod('/endpoint', async (req, res) => {",
+        "try {",
+        "} catch (err) {",
+        "errorResponse(err, res);",
+        "}",
+        "});",
+      ],
+    },
+    {
+      question: ["How do we let our application know about our routers?"],
+      answer: [
+        "Importing and telling our app to use them",
+        "app.use('/', router)",
+      ],
+    },
+  ]);
 
   const shuffleArray = (array: FlashCard[]) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -1085,6 +1177,7 @@ const Main = () => {
           <button onClick={() => resetHandler(noSQLDatabase)}>
             No SQL Databases
           </button>
+          <button onClick={() => resetHandler(express)}>Express</button>
         </div>
       </header>
       {deck.length > 1 && (
