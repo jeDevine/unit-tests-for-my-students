@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FlashCard from "../models/FlashCard";
 import "./Main.css";
 import Card from "./Card";
@@ -164,6 +164,12 @@ const Main = () => {
         "const myFunction = function(){}",
       ],
       answer: ["function declration"],
+    },
+    {
+      question: [
+        "The number of parameters should always match the number of _______?",
+      ],
+      answer: ["arguments"],
     },
     {
       question: [
@@ -691,7 +697,7 @@ const Main = () => {
         "We declare the method with params and return type and thats it.",
         "interface MyInterface {",
         "property1: type",
-        "myMethod( params ) => returnType",
+        "myMethod: ( params ) => returnType",
         "↑ like this ↑",
         "}",
       ],
@@ -1141,7 +1147,7 @@ const Main = () => {
     }
   };
 
-  const resetHandler = (choice: FlashCard[]) => {
+  const deckHandler = (choice: FlashCard[]) => {
     let flippedCards = document.querySelectorAll(".flip");
     flippedCards.forEach((card) => card.classList.remove("flip"));
     shuffleArray(choice);
@@ -1153,31 +1159,31 @@ const Main = () => {
       <header>
         <h1>Pick a topic to study!</h1>
         <div id="button-container">
-          <button onClick={() => resetHandler(HTML)}>HTML</button>
-          <button onClick={() => resetHandler(styling)}>Styling</button>
-          <button onClick={() => resetHandler(variablesFunctions)}>
+          <button onClick={() => deckHandler(HTML)}>HTML</button>
+          <button onClick={() => deckHandler(styling)}>Styling</button>
+          <button onClick={() => deckHandler(variablesFunctions)}>
             Variables and Functions
           </button>
-          <button onClick={() => resetHandler(ifElse)}>if/else</button>
-          <button onClick={() => resetHandler(loops)}>Loops</button>
-          <button onClick={() => resetHandler(objectsArrays)}>
+          <button onClick={() => deckHandler(ifElse)}>if/else</button>
+          <button onClick={() => deckHandler(loops)}>Loops</button>
+          <button onClick={() => deckHandler(objectsArrays)}>
             Objects and Arrays
           </button>
-          <button onClick={() => resetHandler(arrayMethods)}>
+          <button onClick={() => deckHandler(arrayMethods)}>
             Array Methods
           </button>
-          <button onClick={() => resetHandler(DOM)}>DOM</button>
-          <button onClick={() => resetHandler(events)}>Events</button>
-          <button onClick={() => resetHandler(jest)}>Jest</button>
-          <button onClick={() => resetHandler(typeScript)}>TypeScript</button>
-          <button onClick={() => resetHandler(classes)}>Classes</button>
-          <button onClick={() => resetHandler(relationalDB)}>
+          <button onClick={() => deckHandler(DOM)}>DOM</button>
+          <button onClick={() => deckHandler(events)}>Events</button>
+          <button onClick={() => deckHandler(jest)}>Jest</button>
+          <button onClick={() => deckHandler(typeScript)}>TypeScript</button>
+          <button onClick={() => deckHandler(classes)}>Classes</button>
+          {/* <button onClick={() => deckHandler(relationalDB)}>
             Relational Databases
           </button>
-          <button onClick={() => resetHandler(noSQLDatabase)}>
+          <button onClick={() => deckHandler(noSQLDatabase)}>
             No SQL Databases
           </button>
-          <button onClick={() => resetHandler(express)}>Express</button>
+          <button onClick={() => deckHandler(express)}>Express</button> */}
         </div>
       </header>
       {deck.length > 1 && (
