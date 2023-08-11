@@ -28,6 +28,9 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .Card .front {

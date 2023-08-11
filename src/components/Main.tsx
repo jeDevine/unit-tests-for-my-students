@@ -894,7 +894,7 @@ const Main = () => {
     {
       question: ["What is the name of the unique value for each row?"],
       answer: [
-        "foreign key",
+        "foreign key / primary key",
         "CREATE TABLE test(id SERIAL PRIMARY KEY, column2, column3...)",
       ],
     },
@@ -1136,6 +1136,42 @@ const Main = () => {
         "app.use('/', router)",
       ],
     },
+    {
+      question: [
+        "How do we write the command that tells our Mongo server what to do?",
+      ],
+      answer: [
+        "const client = await getClient()",
+        "const cursor = await client.db().collection<Type>('collectionName').find().toArray();",
+        "res.status(200).json(cursor);",
+      ],
+    },
+    {
+      question: [
+        "How does a full endpoint that connects to a mongo server to get all look like?",
+      ],
+      answer: [
+        "router.get('/getAll', async (req, res) => {",
+        "try {",
+        "const client = await getClient()",
+        "const cursor = await client.db().collection<Type>('collectionName').find().toArray();",
+        "res.status(200).json(cursor);",
+        "} catch (err) {",
+        "errorResponse(err, res);",
+        "}",
+        "});",
+      ],
+    },
+    {
+      question: [
+        "How do you pull in a route param and query string param in an endpoint?",
+      ],
+      answer: [
+        "route param - let name = req.param.name",
+        "query string param - let name = req.query.name as string",
+        "(let firstName = req.query['first-name'] for params with '-' in them)",
+      ],
+    },
   ]);
 
   const shuffleArray = (array: FlashCard[]) => {
@@ -1177,13 +1213,13 @@ const Main = () => {
           <button onClick={() => deckHandler(jest)}>Jest</button>
           <button onClick={() => deckHandler(typeScript)}>TypeScript</button>
           <button onClick={() => deckHandler(classes)}>Classes</button>
-          {/* <button onClick={() => deckHandler(relationalDB)}>
+          <button onClick={() => deckHandler(relationalDB)}>
             Relational Databases
           </button>
           <button onClick={() => deckHandler(noSQLDatabase)}>
             No SQL Databases
           </button>
-          <button onClick={() => deckHandler(express)}>Express</button> */}
+          <button onClick={() => deckHandler(express)}>Express</button>
         </div>
       </header>
       {deck.length > 1 && (
