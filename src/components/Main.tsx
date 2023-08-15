@@ -9,10 +9,8 @@ const Main = () => {
   const [HTML] = useState<FlashCard[]>([
     {
       question: ["How do we link our style sheet in our HTML?"],
-      answer: [
-        "in the head of our HTML",
-        `<link rel="stylesheet" href="style.css" />`,
-      ],
+      answer: ["in the head of our HTML"],
+      example: [`<link rel="stylesheet" href="style.css" />`],
     },
     {
       question: ["An article is use for...?"],
@@ -24,15 +22,13 @@ const Main = () => {
       question: [
         "How do we apply attributes to an element? (class, id, etc.)?",
       ],
-      answer: [
-        "inside of the opening tag",
-        "<div class='blah' id='hoblah'> </div>",
-      ],
+      answer: ["inside of the opening tag"],
+      example: ["<div class='blah' id='hoblah'> </div>"],
     },
     {
       question: ["What do you need in a form element?"],
-      answer: [
-        "At least one input with label, and a button",
+      answer: ["At least one input with label, and a button"],
+      example: [
         "<form>",
         "<label for='blah'> Label1 </label>",
         "<input type='text' name='blah' id='blah' />",
@@ -44,6 +40,8 @@ const Main = () => {
       question: ["How do you link a label with the input?"],
       answer: [
         "by making the for attribute on the label match the id attribute on the input",
+      ],
+      example: [
         "<label for='thisMustMatch'> Label1 </label>",
         "<input type='text' name='blah' id='thisMustMatch' />",
       ],
@@ -331,7 +329,7 @@ const Main = () => {
     },
     {
       question: ["What is the template for a for loop?"],
-      answer: ["for (let i = start; i < end; i += step){}"],
+      answer: ["for (let i = start; i <div end; i += step){}"],
     },
     {
       question: ["What is the template for a while loop?"],
@@ -364,8 +362,8 @@ const Main = () => {
     },
     {
       question: ["How do we modify an object's key/value pairs?"],
-      answer: [
-        "dot notation / bracket notation with an = to set the value",
+      answer: ["dot notation / bracket notation with an = to set the value"],
+      example: [
         "let object = {property1: value1, property2: value2}",
         "object.property1 = value3",
         "object = {property1: value3, property2: value2}",
@@ -416,50 +414,111 @@ const Main = () => {
     {
       question: ["what is the best array method to add to an array"],
       answer: ["array.push() / array.unshift()"],
+      example: [
+        "let names = ['James', 'Mitch']",
+        "names.push('Andrea')",
+        "console.log(names)",
+        "['James', 'Mitch', 'Andrea']",
+      ],
     },
     {
       question: ["what array method is synonymous with delete?"],
-      answer: ["array.splice()"],
+      answer: ["array.splice( index, numberOfDeletions )"],
+      example: [
+        "let names = ['James', 'Mitch', 'Andrea']",
+        "names.slice( 0 , 1 )",
+        "console.log(names)",
+        "['Mitch', 'Andrea']",
+      ],
     },
     {
       question: [
         "what array method loops through the whole array allowing you to do something to each element in the array?",
       ],
       answer: ["array.forEach() / array.map()"],
+      example: [
+        "let names = ['James', 'Mitch', 'Andrea']",
+        "names.forEach( (name) => {",
+        "console.log(name)",
+        "}",
+        "James",
+        "Mitch",
+        "Andrea",
+      ],
     },
     {
       question: [
         "what array method will go through an array and return the FIRST element to pass it's condition?",
       ],
       answer: ["array.find()"],
+      example: [
+        "let names = ['James', 'Mitch', 'Andrea']",
+        "let foundName = names.find( (name) => name === 'James')",
+        "console.log(foundName)",
+        "James",
+      ],
     },
     {
       question: [
         "what array method will return a new array with only elements passing the given condition?",
       ],
       answer: ["array.filter()"],
+      example: [
+        "let numbers = [ 5, 10, 20, 25]",
+        "let over15 = numbers.filter( (number) => number > 15)",
+        "console.log(over15)",
+        "[20, 25]",
+      ],
     },
     {
       question: [
         "what array method will return either true or false depending on the given condition?",
       ],
-      answer: ["array.some() / array.contains()"],
+      answer: ["array.some() / array.includes()"],
+      example: [
+        "let names = ['James', 'Mitch', 'Andrea']",
+        "let isMitch = names.includes(Mitch)",
+        "console.log(isMitch)",
+        "true",
+        "let numbers = [ 5, 10, 20, 25]",
+        "let hasGreaterThan10 = numbers.some( (number) => number > 10 )",
+        "console.log(hasGreaterThan10)",
+        "true",
+      ],
     },
     {
       question: [
         "what array method is best used on superlative functions? (min, max, avg, sum)",
       ],
       answer: ["array.reduce()"],
+      example: [
+        "let numbers = [ 5, 10, 20, 25]",
+        "let sum = numbers.reduce( (cv, ac) => cv + ac )",
+        "console.log(sum)",
+        "60",
+      ],
     },
     {
       question: ["what array method is best to grab a section of a string?"],
-      answer: ["array.slice() / string.substrings()"],
+      answer: ["array.slice( start, end ) / string.substring( start, end )"],
+      example: [
+        "let testString = 'I love JavaScript!'",
+        "let firstTwoWords = testString.substring( 0, 6 )",
+        "let testArray = [ 5, 10, 20, 25 ]",
+        "let lastTwoNum = testArray.slice( 2, 3 )",
+      ],
     },
     {
       question: [
         "what array method is best to find the index of an element in an array?",
       ],
       answer: ["array.findIndex()"],
+      example: [
+        "let names = ['James', 'Mitch', 'Andrea']",
+        "let index = names.findIndex( (name) => name === 'Andrea' );",
+        "console.log(index)",
+        "2",
+      ],
     },
     {
       question: ["How do you find the sum of an array of numbers with reduce?"],
@@ -470,6 +529,12 @@ const Main = () => {
         "How do you find the max of an array of objects with a price property?",
       ],
       answer: ["array.reduce( ( ac , cv ) => ac.price > cv.price ? ac : cv )"],
+      example: [
+        "let shoppingList = [ { name: 'chair', price: 20 }, { name: 'table', price: 25 }, { name: 'couch', price: 30 } ]",
+        "let mostExpensive = shoppingList.reduce( ( ac , cv ) => ac.price > cv.price ? ac : cv )",
+        "console.log(mostExpensive)",
+        "{ name: 'couch', price: 30 }",
+      ],
     },
   ]);
   const [DOM] = useState<FlashCard[]>([
@@ -480,6 +545,15 @@ const Main = () => {
     {
       question: ["How do we pull in HTML nodes into our JavaScript?"],
       answer: ["document.querySelector"],
+      example: [
+        "HTML",
+        "<div id='id' class='class'></div>",
+        "JS",
+        "any of the below",
+        "let div = document.queryselector(div)",
+        "let div = document.queryselector(.class)",
+        "let div = document.queryselector(#id)",
+      ],
     },
     {
       question: ["What does document.querySelectorAll return?"],
@@ -492,6 +566,11 @@ const Main = () => {
     {
       question: ["How do we add an attribute to a Node?"],
       answer: ["node.setAttribute('attribute', 'value')"],
+      example: [
+        "let newDiv = document.createElement('div')",
+        "newDiv.setAttribute('id', 'zebra')",
+        "<div id='zebra></div>",
+      ],
     },
     {
       question: ["How do we add and/or remove classes from a Node?"],
@@ -499,6 +578,17 @@ const Main = () => {
         "node.classList.add() ",
         "node.classList.remove()",
         "node.classList.toggle()",
+      ],
+      example: [
+        "<div></div>",
+        "node.classList.add('blah')",
+        "<div class='blah'></div>",
+        "node.classList.remove('blah')",
+        "<div></div>",
+        "node.classList.toggle('blah')",
+        "<div class='blah'></div>",
+        "node.classList.toggle('blah')",
+        "<div></div>",
       ],
     },
     {
@@ -519,14 +609,16 @@ const Main = () => {
       question: [
         "How do you change a style of a Node such as background-color?",
       ],
-      answer: [
-        "accessing the style property",
-        "node.style.backgroundColor = 'blue'",
+      answer: ["accessing the style property through dot notation"],
+      example: [
+        "let newDiv = document.createElement('div')",
+        "newDiv.style.backgroundColor = 'blue'",
       ],
     },
     {
       question: ["How do you get rid of a node from the DOM entirely?"],
       answer: ["node.remove()"],
+      example: ["let div = document.queryselector(div)", "div.remove();"],
     },
     {
       question: [
@@ -543,20 +635,31 @@ const Main = () => {
     {
       question: ["How do we add an event listener to a Node?"],
       answer: ["node.addEventListener('event', ()=>{})"],
+      example: [
+        "let div = document.queryselector(div)",
+        "div.addEventListener('click', ()=>{",
+        "console.log('hello');",
+        "}",
+      ],
     },
     {
       question: ["How do we remove an event listener to a Node?"],
-      answer: [
-        "node.addEventListener('event', myFunction)",
-        "node.removeEventListener('event', myFunction)",
-        "Must be a named function to be able to remove",
+      answer: ["node.removeEventListener(event, myFunction)"],
+      example: [
+        "let div = document.queryselector(div)",
+        "div.addEventListener('click', myFunction)",
+        "the event must be a named function to be able to removed",
+        "div.removeEventListener('click', myFunction)",
       ],
     },
     {
       question: ["What event do we use for a form?"],
-      answer: [
-        "A submit event",
-        "form.addEventListener('submit', (e)=>{e.preventDefault();})",
+      answer: ["A submit event on the form element."],
+      example: [
+        "let form = document.querySelector(form);",
+        "form.addEventListener('submit', (e)=>{",
+        "e.preventDefault();",
+        "})",
       ],
     },
     {
@@ -564,13 +667,21 @@ const Main = () => {
       answer: [
         "using one event listener on a parent node in place of many event listeners on the children",
       ],
+      example: [
+        "document.body.addEventListener('click', (e) => {",
+        "if( e.target.classList.contains('blah') ){",
+        "console.log('hello');",
+        "} else if( e.target.classList.contains('zebra') ){",
+        "console.log('goodbye')",
+        "}) ",
+      ],
     },
     {
       question: [
         "How do we specify what to click when using event delegation?",
       ],
-      answer: [
-        "making a condition based on class/tagName",
+      answer: ["making a condition based on class/tagName"],
+      example: [
         "node.addEventListener('click', ()=>{",
         "if (e.target.classList.contains('blah')) {}",
         "if (e.target.tagName === 'DIV') {}",
@@ -584,11 +695,15 @@ const Main = () => {
     {
       question: ["How do we pull in inputs for a form submit event?"],
       answer: [
-        "querySelector inside of submit event listener and using .value",
+        "querySelector inside of submit event listener and using .value (.checked for checkboxes)",
+      ],
+      example: [
         "form.addEventListener('submit', (e)=>{",
         "e.preventDefault()",
         "const input = document.querySelector(#input)",
         "let inputValue = input.value",
+        "const checkbox = document.querySelector(#checkbox)",
+        "let ifChecked = checkbox.checked",
         "})",
       ],
     },
@@ -644,16 +759,16 @@ const Main = () => {
     },
     {
       question: ["How do we use type annotations for variables?"],
-      answer: [
-        "adding a : with the type to the end of the variable name",
+      answer: ["adding a : with the type to the end of the variable name"],
+      example: [
         "let name: string = 'james'",
         "let arrayOfNames: string[] = ['a', 'b', 'c']",
       ],
     },
     {
       question: ["How do we use type annotations for functions?"],
-      answer: [
-        "adding return type and annotating any params",
+      answer: ["adding return type and annotating any params"],
+      example: [
         "const myFunction = (param1: string, param2: number):number[] => {returns array of numbers}",
       ],
     },
@@ -663,8 +778,8 @@ const Main = () => {
     },
     {
       question: ["How do we make a parameter optional?"],
-      answer: [
-        "Adding a ? to the end before the type, param2 is optional",
+      answer: ["Adding a ? to the end before the type, param2 is optional"],
+      example: [
         "const myFunction = (param1: string, param2?: number):number[] => {}",
       ],
     },
@@ -683,8 +798,8 @@ const Main = () => {
     },
     {
       question: ["How do you say a property is optional in an interface?"],
-      answer: [
-        "a ? at the end of the property name, property1 is optional",
+      answer: ["a ? at the end of the property name, property1 is optional"],
+      example: [
         "interface MyInterface {",
         "property1?: type",
         "property2: type",
@@ -695,6 +810,8 @@ const Main = () => {
       question: ["How do you add a method onto an interface?"],
       answer: [
         "We declare the method with params and return type and thats it.",
+      ],
+      example: [
         "interface MyInterface {",
         "property1: type",
         "myMethod: ( params ) => returnType",
@@ -706,15 +823,13 @@ const Main = () => {
       question: [
         "How do we type annotate something that is either a string or null?",
       ],
-      answer: [
-        "using the pipe | or operator but only one",
-        "const thing: string | null = null;",
-      ],
+      answer: ["using the pipe | or operator but only one"],
+      example: ["const thing: string | null = null;"],
     },
     {
       question: ["how do we export default an interface?"],
-      answer: [
-        "adding 'export default' to start of interface declration",
+      answer: ["adding 'export default' to start of interface declration"],
+      example: [
         "export default interface MyInterface {",
         "property1: type",
         "}",
@@ -724,8 +839,8 @@ const Main = () => {
       question: ["How do we import our interfaces?"],
       answer: [
         "either using the quick fix option or manually typing out the import",
-        "import MyInterface from '../filePath'",
       ],
+      example: ["import MyInterface from '../filePath'"],
     },
     {
       question: ["How do we export more than one thing?"],
@@ -733,10 +848,8 @@ const Main = () => {
     },
     {
       question: ["How do we import more than one thing?"],
-      answer: [
-        "import with destructing",
-        "import { thing1, thing2 } from '../filePath'",
-      ],
+      answer: ["import with destructing"],
+      example: ["import { thing1, thing2 } from '../filePath'"],
     },
     {
       question: ["How do we test our TypeScript files?"],
@@ -768,13 +881,15 @@ const Main = () => {
       ],
       answer: [
         "using the keyword 'new' followed by the name of the Class. Here we have a Food class",
-        "let hotdog: Food = new Food('hotdog');",
       ],
+      example: ["let hotdog: Food = new Food('hotdog');"],
     },
     {
       question: ["What does the constructor do in a class?"],
       answer: [
         "sets the values to the properties that are on this class. Here we have property1 being set by the constructor",
+      ],
+      example: [
         "class MyClass {",
         "property1: type",
         "constructor( property1: type ) {",
@@ -785,17 +900,21 @@ const Main = () => {
     },
     {
       question: ["How do we add a method on a Class?"],
-      answer: [
-        "after the constructor we create the method",
+      answer: ["after the constructor we create the method"],
+      example: [
+        "class MyClass {",
+        "constructor() {}",
         "myMethod(params): returnType {}",
+        "}",
       ],
     },
     {
       question: [
         "How do we extend a Class? Or how do we make a subclass of another class?",
       ],
-      answer: [
-        "using our 'extends' keyword to create a subclass. Second is a subclass of First",
+      answer: ["using our 'extends' keyword to create a subclass. "],
+      example: [
+        "Second is a subclass of First",
         "class First {}",
         "class Second extends First {}",
       ],
@@ -838,8 +957,8 @@ const Main = () => {
     },
     {
       question: ["how do you set an inital value for a property on a class?"],
-      answer: [
-        "setting the value when you make the property",
+      answer: ["setting the value when you make the property"],
+      example: [
         "class MyClass {",
         "property1: type = 'inital value'",
         "constructor( property1: type ) {",
@@ -855,6 +974,8 @@ const Main = () => {
       ],
       answer: [
         "by making the constructor parameter optional by giving it a default value",
+      ],
+      example: [
         "class MyClass {",
         "property1: type",
         "constructor( property1: type = 'default value') {",
@@ -867,7 +988,10 @@ const Main = () => {
     {
       question: ["What does the keyword 'this' mean?"],
       answer: [
-        "this.property means that we are targeting the property that lives on the class. For example with the constructor",
+        "this.property means that we are targeting the property that lives on the class.",
+      ],
+      example: [
+        "For example with the constructor",
         "constructor( newProperty1 ) {",
         "this.property1 = newProperty1;",
         "}",
@@ -893,8 +1017,8 @@ const Main = () => {
     },
     {
       question: ["What is the name of the unique value for each row?"],
-      answer: [
-        "foreign key / primary key",
+      answer: ["foreign key / primary key"],
+      example: [
         "CREATE TABLE test(id SERIAL PRIMARY KEY, column2, column3...)",
       ],
     },
@@ -912,7 +1036,10 @@ const Main = () => {
     },
     {
       question: ["In PgAdmin, how do we make a new table?"],
-      answer: ["CREATE TABLE(column1, column2, column3...)"],
+      answer: ["CREATE TABLE tableName(column1, column2, column3...)"],
+      example: [
+        "CREATE TABLE heroes(id SERIAL PRIMARY KEY, name VARCHAR(20), super_power VARCHAR(30))",
+      ],
     },
     {
       question: ["In PgAdmin, how do we add values to the table?"],
@@ -920,47 +1047,111 @@ const Main = () => {
         "INSERT INTO tableName (column1, column2,column3...)",
         "VALUES(value1, value2, value3...)",
       ],
+      example: [
+        "INSERT INTO heroes (name, super_power)",
+        "VALUES(the Churpis, coding)",
+      ],
     },
     {
       question: ["In PgAdmin, How do we retrieve data froma a table?"],
       answer: ["SELECT * FROM tableName"],
+      example: [
+        "SELECT * FROM heroes",
+        "| name ------ | super_power |",
+        "| the Chripus | coding ---- |",
+      ],
     },
     {
       question: ["In PgAdmin, How do we modify data in a table?"],
       answer: ["UPDATE tableName SET property=value WHERE..."],
+      example: [
+        "UPDATE heroes SET super_power=REACT WHERE heroes.name='the Chripus'",
+        "| name ------ | super_power |",
+        "| the Chripus | REACT ----- |",
+      ],
     },
     {
       question: ["In PgAdmin, How do we delete data within a table?"],
       answer: ["DELETE FROM tableName WHERE..."],
+      example: [
+        "| name ------ | super_power |",
+        "| the Chripus | REACT ----- |",
+        "| Hulk ------ | Strength -- |",
+        "DELETE FROM heroes WHERE heroes.name='the Chripus'",
+        "| name ------ | super_power |",
+        "| Hulk ------ | Strength -- |",
+      ],
     },
     {
       question: ["In PgAdmin, How do we target a specific column in a table?"],
-      answer: [
-        "using WHERE and making a conditional query",
-        "SELECT * FROM staff WHERE name='James'",
+      answer: ["using WHERE and making a conditional query"],
+      example: [
+        "| name ------ | super_power |",
+        "| the Chripus | REACT ----- |",
+        "| Hulk ------ | Strength -- |",
+        "SELECT * FROM staff WHERE name='Hulk'",
+        "| name ------ | super_power |",
+        "| Hulk ------ | Strength -- |",
       ],
     },
     {
       question: ["In PgAdmin, How do we return the data in a sorted manner?"],
       answer: [
         "ORDER BY is how we sort data and using ASC or DESC for accending and descending order",
-        "SELECT * FROM staff ORDER BY name ASC",
+      ],
+      example: [
+        "SELECT * FROM heroes ORDER BY name ASC",
+        "SELECT * FROM heroes ORDER BY super_power DESC",
       ],
     },
     {
       question: ["In PgAdmin, How do we return data from more than one table?"],
       answer: [
         "With a JOIN and a corresponding key",
-        "SELECT * FROM staff JOIN alumni ON staff.name = alumni.name",
+        "SELECT * FROM tableA JOIN tableB ON tableA.id = tableB.id",
+      ],
+    },
+    {
+      question: ["What is the left/right join?"],
+      answer: [
+        "left join will show all the data from the left table and only the data that matches from the right. Right join is the same thing just shows all data from right table and only matches from left.",
+      ],
+    },
+    {
+      question: ["What is the full join?"],
+      answer: [
+        "Full join will join both tables showing all of the data from both",
+      ],
+    },
+    {
+      question: ["What is the inner join (join)?"],
+      answer: [
+        "join shows data from both tables but only the rows that have the matching value.",
       ],
     },
     {
       question: [
-        "What is the difference between left/right join and inner join/join?",
+        "How do we search for something that either starts with or ends with a string?",
       ],
-      answer: [
-        "inner join/join will only display the data that has a value in both tables while a left/right join will display all the data from both tables even if it doesn't match",
+      answer: ["LIKE 'startsWith%' ", "LIKE '$endsWith'"],
+      example: [
+        "| name ------ | super_power |",
+        "| the Chripus | REACT ----- |",
+        "| name ------ | super_power |",
+        "| Hulk ------ | Strength -- |",
+        "SELECT * FROM staff WHERE name LIKE 'Hu%'",
+        "or",
+        "SELECT * FROM staff WHERE name LIKE '$lk'",
+        "| name ------ | super_power |",
+        "| Hulk ------ | Strength -- |",
       ],
+    },
+    {
+      question: [
+        "How do we only return the number of rows that we want in a request?",
+      ],
+      answer: ["LIMIT 10 would limit the results to 10"],
+      example: ["SELECT * FROM table LIMIT 10"],
     },
   ]);
   const [noSQLDatabase] = useState<FlashCard[]>([
@@ -975,12 +1166,26 @@ const Main = () => {
       answer: ["Just like a JS object."],
     },
     {
+      question: ["How do we create a collection in MongoDB?"],
+      answer: [
+        "Simply inserting into a collection will create it. If it doesn't exist already",
+      ],
+    },
+    {
       question: ["What unique property will MongoDB add to EVERY document?"],
-      answer: ["_id: ObjectId('f64ghe5r6gtr6e')"],
+      answer: [
+        "_id which will have a special MongoDB value called ObjectId",
+        "_id: ObjectId('f64ghe5r6gtr6e')",
+      ],
     },
     {
       question: ["In MongoDB, how do we add a document?"],
       answer: ["db.collectionName.insertOne({})"],
+      example: [
+        "db.students.insertOne( {name: 'James'} )",
+        "creates the following document",
+        "{ {_id: ObjectId('64db99b10ab1d7bcf5a0769d'), name: 'James'} }",
+      ],
     },
     {
       question: ["In MongoDB, how do we list all documents?"],
@@ -988,6 +1193,14 @@ const Main = () => {
         "db.collectionName.find()",
         "Leaving the find() method empty returns everything",
       ],
+    },
+    {
+      question: ["In MongoDB, how do we list only specified documents?"],
+      answer: [
+        "The find method takes in a query document that only returns the matching documents.",
+        "db.collectionName.find({query})",
+      ],
+      example: ["db.students.find({name: 'James'})"],
     },
     {
       question: [
@@ -1000,42 +1213,52 @@ const Main = () => {
         "In MongoDB, how do we add more than one document to a collection at once?",
       ],
       answer: ["db.collectionName.insertMany([{},{}])"],
+      example: [
+        "db.collectionName.insertMany([{name: 'James'},{name: 'Mitch}])",
+        "creates the following documents",
+        "{ {_id: ObjectId('64db99b10ab1d7bcf5a0769d'), name: 'James'},{_id: ObjectId('1d7bcf5a0769d64db99b10ab'), name: 'Mitch'} }",
+      ],
     },
     {
       question: [
         "In MongoDB, how do we return just one document based on a search?",
       ],
       answer: ["db.collectionName.findOne()"],
+      example: ["db.students.findOne( {name: 'James'} )"],
     },
     {
       question: [
         "In MongoDB, how do we make it so only a set amount of results are returned?",
       ],
       answer: [
-        "db.collectionName.find().limit()",
         "the .limit() at the end allows it and the number you want to come back goes in the () like .limit(4) for 4 results",
       ],
+      example: ["db.students.find().limit(4)"],
     },
     {
       question: ["In MongoDB, how do we return the data in an ordered manner?"],
       answer: [
-        "db.collectionName.find().sort()",
         ".sort() allows us to sort our results with a condition like .sort( {name: 1} )",
       ],
+      example: ["db.collectionName.find().sort( {name: 1} )"],
     },
     {
       question: ["In MongoDB, how do we search for more than one condition?"],
       answer: [
         "$or / $and allows the query to take in more than one condition",
-        "db.collectionName.find( { $or: [{name: 'james'},{name: 'mitch'}] } )",
+      ],
+      example: [
+        "db.students.find( { $or: [{name: 'james'},{name: 'mitch'}] } )",
       ],
     },
     {
       question: ["In MongoDB, how do we use projection?"],
       answer: [
         "Projection is used to limit which fields are shown in the results",
-        "db.collectionName.find({query}, {name: 1, age: -1})",
-        "here we are saying show the name but don't show the age",
+      ],
+      example: [
+        "db.students.find({query}, {name: 1})",
+        "only the name property would be returned along with the _id which always returns unless projection is used to hide it.",
       ],
     },
     {
@@ -1043,6 +1266,43 @@ const Main = () => {
         "In MongoDB, how do we totally subsitute the whole document with a new one?",
       ],
       answer: ["db.collectionName.replaceOne()"],
+      example: [
+        "db.students.replaceOne( { name: 'James' }, { name: 'Bob' } )",
+        "Now the document that had the name of 'James' has been replaced with 'Bob'",
+      ],
+    },
+    {
+      question: ["In MongoDB, how do we access embedded documents?"],
+      answer: [
+        "putting the property in quotes and using dot notation for the index and property.",
+      ],
+      example: [
+        "{name: 'James', tutors: [{name: 'Josh'},{name: 'Kim'}]}",
+        "If I wanted to access Kim",
+        "db.students.updateOne({'tutors.1.name': 'Kim'}, {$set: {name: 'Kimberly'} })",
+        "if I wanted to search for any Josh's",
+        "db.students.find({'tutors.name': 'Josh'})",
+      ],
+    },
+    {
+      question: ["How do you search for starts with/ends with in MongoDB?"],
+      answer: ["Using a regular expression and it's syntax with ^ and $"],
+      example: [
+        "This will look for anything starting with a capital J",
+        "db.students.find({name: /^J/})",
+        "This will look for anything ending with .com",
+        "db.students.find({name: /.edu$/})",
+      ],
+    },
+    {
+      question: ["How do you add a new feild to a document in MongoDB?"],
+      answer: [
+        "using the updateOne and $set you can add a new property that wasn't already there",
+      ],
+      example: [
+        "Even if this document doesn't have an age property it will after this command.",
+        "db.students.updateOne({name: 'James'}, {$set: {age: 23} })",
+      ],
     },
   ]);
   const [express] = useState<FlashCard[]>([
@@ -1061,7 +1321,9 @@ const Main = () => {
     {
       question: ["What is an endpoint?"],
       answer: [
-        "The URI of an URL.",
+        "The URI of an URL. Everything after the .whatever like .com .org",
+      ],
+      example: [
         "Ex: http://example.com/search/things",
         "The endpoint is: /search/things",
       ],
@@ -1168,8 +1430,100 @@ const Main = () => {
       ],
       answer: [
         "route param - let name = req.param.name",
-        "query string param - let name = req.query.name as string",
-        "(let firstName = req.query['first-name'] for params with '-' in them)",
+        "query string param - let name = req.query.name as string;",
+        "(let firstName = req.query['first-name'] as string; for params with '-' in them)",
+      ],
+    },
+  ]);
+  const [react] = useState<FlashCard[]>([
+    {
+      question: ["What is React?"],
+      answer: [
+        "A open source JavaScript library that lets us make single page applications with complicated web UIs more easily.",
+      ],
+    },
+    {
+      question: ["What is a React Component?"],
+      answer: [
+        "The pieces, or building blocks, that make up a webpage. A React Component are functions that return JSX.",
+      ],
+    },
+    {
+      question: [
+        "What is Component-Based Architecture and what are some advantages?",
+      ],
+      answer: [
+        "Each component bundles together the HTML, CSS, and JS (TS) for that 'block' of the code.",
+        "They are reuseable, testable, scalable, and independent.",
+      ],
+    },
+    {
+      question: ["How would you render the component 'Main'?"],
+      answer: ["<Main />"],
+    },
+    {
+      question: ["What does a react component look like?"],
+      answer: [
+        "const Component = () => {",
+        "return (",
+        "<div className='Component'></div>",
+        ")",
+        "};",
+        "export default Component;",
+      ],
+    },
+    {
+      question: ["What is State?"],
+      answer: [
+        "each react component can have state. It is react's variables which are updated in real time asynchronously and immutability",
+      ],
+    },
+    {
+      question: ["How do we make a state variable?"],
+      answer: ["const [state, setState] = useState<type>( initalValue );"],
+    },
+    {
+      question: ["How do we change the state?"],
+      answer: [
+        "using the second provided variable in the state declaration, setState.",
+        "setState( newValue )",
+      ],
+      example: [
+        "const [name, setName] = useState<string>('James');",
+        "setName( 'Mitch');",
+        "console.log( name );",
+        "Mitch",
+      ],
+    },
+    {
+      question: [
+        "How do we keep track of the previous state when setting a new state?",
+      ],
+      answer: [
+        "a callback in the setState function",
+        "setState( (prev) => prev+1 )",
+        "this increments the state by 1",
+      ],
+      example: [
+        "const [number, setNumber] = useState<number>(0);",
+        "number++ //Wrong, will error",
+        "setNumber( (prev) => prev++ ); //correct",
+      ],
+    },
+    {
+      question: ["What is a react Hook?"],
+      answer: [
+        "hooks are built in react functions that were built to provide a streamlined development experience. They all start with 'use', for example: useState() is a hook.",
+      ],
+    },
+    {
+      question: ["How do we handle DOM events like click events in react?"],
+      answer: [
+        "By using the attribute such as onClick and passing an inline function to a handler function",
+      ],
+      example: [
+        "const clickHandler = ( e:MouseEvent ):void => console.dir(e.target)",
+        "<button onClick={ (e) => clickHandler(e) }> onClick </button>",
       ],
     },
   ]);
@@ -1186,6 +1540,8 @@ const Main = () => {
   const deckHandler = (choice: FlashCard[]) => {
     let flippedCards = document.querySelectorAll(".flip");
     flippedCards.forEach((card) => card.classList.remove("flip"));
+    let examples = document.querySelectorAll(".example");
+    examples.forEach((card) => card.classList.add("hidden"));
     shuffleArray(choice);
     setDeck(choice);
   };
@@ -1220,6 +1576,7 @@ const Main = () => {
             No SQL Databases
           </button>
           <button onClick={() => deckHandler(express)}>Express</button>
+          {/* <button onClick={() => deckHandler(react)}>React</button> */}
         </div>
       </header>
       {deck.length > 1 && (

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import FlashCard from "../models/FlashCard";
 import "./Card.css";
 
@@ -6,14 +7,22 @@ interface Props {
 }
 
 const Card = ({ card }: Props) => {
+  const [showEx, setShowEx] = useState<boolean>(false);
+
   const clickHandler = (e: any) => {
     if (
       e.target.classList.contains("front") ||
       e.target.classList.contains("back")
     ) {
       e.target.parentNode.classList.toggle("flip");
+    } else if (e.target.classList.contains("exit-example")) {
+      e.target.parentNode.classList.add("hidden");
     } else if (e.target.tagName === "P") {
       e.target.parentNode.parentNode.classList.toggle("flip");
+    } else if (e.target.classList.contains("example-btn")) {
+      e.target.parentNode.parentNode.parentNode.childNodes[1].classList.remove(
+        "hidden"
+      );
     }
   };
   return (
@@ -28,7 +37,31 @@ const Card = ({ card }: Props) => {
           {card.answer.map((item, i) => (
             <p key={`${item}${i}`}>{item}</p>
           ))}
+          {card.example?.length && (
+            <button
+              className={`example-btn`}
+              onClick={(e) => {
+                clickHandler(e);
+              }}
+            >
+              see example
+            </button>
+          )}
         </div>
+      </div>
+
+      <div className={`example hidden`}>
+        <p
+          className="exit-example"
+          onClick={(e) => {
+            clickHandler(e);
+          }}
+        >
+          X
+        </p>
+        {card.example?.map((line, i) => (
+          <p key={`${line}${i}`}>{line}</p>
+        ))}
       </div>
     </li>
   );
