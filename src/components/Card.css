@@ -43,29 +43,3 @@
   color: black;
   transform: rotateY(180deg);
 }
-.Card .example {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  z-index: 15;
-  width: 300px;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 15px;
-  border-radius: 15px;
-}
-.Card .exit-example {
-  position: absolute;
-  right: 6px;
-  top: 6px;
-  cursor: pointer;
-  border: 1px solid black;
-  height: 18px;
-  width: 15px;
-  text-align: center;
-  font-size: 0.75em;
-}

@@ -20,36 +20,38 @@ const Card = ({ card }: Props) => {
     } else if (e.target.tagName === "P") {
       e.target.parentNode.parentNode.classList.toggle("flip");
     } else if (e.target.classList.contains("example-btn")) {
-      e.target.parentNode.parentNode.parentNode.childNodes[1].classList.remove(
+      // console.dir(e.target.parentNode.parentNode.parentNode.nextSibling);
+      e.target.parentNode.parentNode.parentNode.nextSibling.classList.remove(
         "hidden"
       );
     }
   };
   return (
-    <li className="Card flip-card">
-      <div className={`flip-card-inner`}>
-        <div className="front" onClick={clickHandler}>
-          {card.question.map((item, i) => (
-            <p key={`${item}${i}`}>{item}</p>
-          ))}
+    <>
+      <li className="Card flip-card">
+        <div className={`flip-card-inner`}>
+          <div className="front" onClick={clickHandler}>
+            {card.question.map((item, i) => (
+              <p key={`${item}${i}`}>{item}</p>
+            ))}
+          </div>
+          <div className="back" onClick={clickHandler}>
+            {card.answer.map((item, i) => (
+              <p key={`${item}${i}`}>{item}</p>
+            ))}
+            {card.example?.length && (
+              <button
+                className={`example-btn`}
+                onClick={(e) => {
+                  clickHandler(e);
+                }}
+              >
+                see example
+              </button>
+            )}
+          </div>
         </div>
-        <div className="back" onClick={clickHandler}>
-          {card.answer.map((item, i) => (
-            <p key={`${item}${i}`}>{item}</p>
-          ))}
-          {card.example?.length && (
-            <button
-              className={`example-btn`}
-              onClick={(e) => {
-                clickHandler(e);
-              }}
-            >
-              see example
-            </button>
-          )}
-        </div>
-      </div>
-
+      </li>
       <div className={`example hidden`}>
         <p
           className="exit-example"
@@ -63,7 +65,7 @@ const Card = ({ card }: Props) => {
           <p key={`${line}${i}`}>{line}</p>
         ))}
       </div>
-    </li>
+    </>
   );
 };
 

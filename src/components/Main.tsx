@@ -505,7 +505,7 @@ const Main = () => {
         "let testString = 'I love JavaScript!'",
         "let firstTwoWords = testString.substring( 0, 6 )",
         "let testArray = [ 5, 10, 20, 25 ]",
-        "let lastTwoNum = testArray.slice( 2, 3 )",
+        "let lastTwoNum = testArray.slice( 2 ) // we leave the last argument empty implying to go to the end.",
       ],
     },
     {
@@ -1369,7 +1369,7 @@ const Main = () => {
       answer: [
         "Route params are data passed along in the URI",
         "myRouter.get( `/endpoint/:routeParam` , () => {} )",
-        "...com/blah/routeParam",
+        "...com/endpoint/blahblahblah",
       ],
     },
     {
@@ -1394,7 +1394,7 @@ const Main = () => {
     {
       question: ["How do we let our application know about our routers?"],
       answer: [
-        "Importing and telling our app to use them",
+        "Importing and telling our app to use them in the index.ts file",
         "app.use('/', router)",
       ],
     },
@@ -1432,6 +1432,46 @@ const Main = () => {
         "route param - let name = req.param.name",
         "query string param - let name = req.query.name as string;",
         "(let firstName = req.query['first-name'] as string; for params with '-' in them)",
+      ],
+      example: [
+        "router.get('/endpoint/:zebra', async (req, res) => {",
+        "const zebra = req.param.zebra",
+        "const potato = req.query.potato as string;",
+        "}",
+        "...com/endpoint/blueberry?potato=tomato",
+        "then, zebra = 'blueberry'",
+        "and, potato = 'tomato'",
+      ],
+    },
+    {
+      question: [
+        "What does it mean when something is asynchronous? What key word do we use on async functions?",
+      ],
+      answer: [
+        "Asynchronous means to follow it's own sequence. It will not wait it's turn to run it will run on its own.",
+        "The key word we use is await. Await allows us to tell our async function to wait until this line is done before moving onto the next within the async function.",
+      ],
+    },
+    {
+      question: ["How do we make our dynamic optional query object?"],
+      answer: [
+        "using the spread operator (...) and a ternary operator we can make an object that will replicate what our query object in mongoDB would be.",
+      ],
+      example: [
+        `const maxPrice: number = parseInt(req.query["max-price"] as string);`,
+        `const prefix: string = req.query.prefix as string;`,
+        "const query = {",
+        "...(maxPrice ? { price: { $lte: maxPrice } } : {}), ",
+        "// if maxPrice is true, ...{price: { $lte: maxPrice } } === price: {$lte: maxPrice}",
+        "// if maxPrice is false, ...{} === nothing at all, blank.",
+        "...(prefix ? { name: new RegExp(prefix, 'i') } : {}),",
+        "// if prefix is true, ...{name: new RegExp(prefix, 'i')} === name: /prefix/i",
+        "// if prefix is false, ...{} === nothing at all, blank",
+        "};",
+        "// if both true, query = { price: { $lte: maxPrice}, name: /prefix/i }",
+        "// if both false, query = {}, if both false they are blank nothing at all so there is nothing in the object",
+        "// if only maxPrice is true, query = { price: { $lte: maxPrice } }, because prefix is blank!",
+        "// if only prefix is true, query = { name: /prefix/i }, because maxPrice is blank!",
       ],
     },
   ]);
