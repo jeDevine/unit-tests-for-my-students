@@ -1566,6 +1566,115 @@ const Main = () => {
         "<button onClick={ (e) => clickHandler(e) }> onClick </button>",
       ],
     },
+    {
+      question: ["What is a fragment?"],
+      answer: [
+        "A way to group multiple nodes together as one. Used when you need to return a single JSX node but have more than one",
+      ],
+      example: [
+        "Like a ternary operator or 'if' you can only return a single node but here we use fragment to return both an h1 and p",
+        "{ isShown &&",
+        "<>",
+        "<h1>Hello</h1>",
+        "<p>Welcome to blah</p>",
+        "</>",
+        "}",
+      ],
+    },
+    {
+      question: ["What is immutability?"],
+      answer: [
+        "If something is immutable it means it will not ever change. It can be replaced however.",
+      ],
+      example: [
+        "Think of a open close sign hanging in the door of a coner store. We have an open side and a closed side. They are immutable they cannot change. However we can flip the sign to replace weither we show the open side or the closed side.",
+      ],
+    },
+    {
+      question: ["How do we add/delete on an immutable array?"],
+      answer: [
+        "Replacing the whole array with a new array. We can do this by taking advantage of prev, and the spread operator (...) inside of our setState function.",
+      ],
+      example: [
+        "const [numbers, setNumbers] = useState([1, 2]);",
+        "lets add 3, 4, and 5 to the array",
+        "setNumbers( (prev) => [...prev, 3, 4, 5])",
+        "Now lets remove the number at index = 2 (3)",
+        "setNumbers( (prev) => [...prev.slice(0, index), ...prev.slice(index + 1) ] )",
+      ],
+    },
+    {
+      question: [
+        "How do we replace an object on an immutable array of objects?",
+      ],
+      answer: [
+        "Replacing the whole array with a new array that slices off the one we are replacing and inputs the new object.",
+      ],
+      example: [
+        "const [staff, setStaff] = useState([",
+        "{ name: 'James', age: 28 }",
+        "{ name: 'Bill', age: 102 }",
+        "{ name: 'Mitch', age: 27 }",
+        "]);",
+        "lets replace Bill with Andrea",
+        "let index = 1;",
+        "setStaff( (prev) => [...prev.slice( 0, index ), { name: 'Andrea', age: 26 }, ...prev.slice( index + 1 )] )",
+      ],
+    },
+    {
+      question: ["What is a controlled component? (component with form)"],
+      answer: [
+        "React's recommended tatic for forms by keeping our state in sync with our form inputs with state updating from onChange based on the value from the input and vise versa",
+      ],
+      example: [
+        "const [name, setName] = useState<string>('')",
+        "<form>",
+        "<input type='text' name='input1' id='input1' value={name} onChange={ (e) => setName(e.target.value)} />",
+        "</form>",
+        "See how we have the value as the state variable and in the onChange we are using the setState function to keep it in sync",
+      ],
+    },
+    {
+      question: [
+        "On form submission, how do we handle the form data on submit?",
+      ],
+      answer: [
+        "using the onSubmit attribute which will reference a handler function which then handles the form data how we wish",
+      ],
+      example: [
+        "const submitHandler = (e: FormEvent) => {",
+        "e.preventDefault(); //stops page reloading",
+        "console.log(name); //We are just going to console log whatever the user puts in the input",
+        "}",
+        "const [name, setName] = useState<string>('')",
+        "<form onSubmit={ submitHandler }>",
+        "<input type='text' name='input1' id='input1' value={name} onChange={ (e) => setName(e.target.value)} />",
+        "</form>",
+      ],
+    },
+    {
+      question: ["What do we use props for?"],
+      answer: ["Props are used to pass data from one component to another."],
+      example: [
+        "In the following line we are redering the component List.tsx and going to pass the prop of 'theme' that has a value of 'darkTheme'",
+        "<List theme={darkTheme} />",
+        "In the List.tsx we recieve the props",
+        "interface Props {",
+        "theme: boolean;",
+        "}",
+        "const List = ( {theme}: Props ) => {}",
+      ],
+    },
+    {
+      question: ["What is a callback prop?"],
+      answer: [
+        "A function passed as a prop where the child can call the function.",
+      ],
+      example: [
+        "<List myFunction={(params) => myFunction(params)} />",
+        "<List myFunction={myFunction} /> // if no params we can shorten to this",
+      ],
+    },
   ]);
 
   const shuffleArray = (array: FlashCard[]) => {
@@ -1616,7 +1725,7 @@ const Main = () => {
             No SQL Databases
           </button>
           <button onClick={() => deckHandler(express)}>Express</button>
-          {/* <button onClick={() => deckHandler(react)}>React</button> */}
+          <button onClick={() => deckHandler(react)}>React</button>
         </div>
       </header>
       {deck.length > 1 && (
